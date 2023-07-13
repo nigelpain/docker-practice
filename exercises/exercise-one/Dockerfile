@@ -6,5 +6,5 @@ RUN pip3 install --no-cache --upgrade pip setuptools
 COPY ./app /src
 WORKDIR /src
 RUN pip3 install -r requirements.txt
-EXPOSE 8080
-RUN python3 main.py
+EXPOSE 5000
+CMD ["python3", "exercise_one.py"]
