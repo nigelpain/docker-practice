@@ -11,7 +11,8 @@ services:
       DB_USER: exercise2user
       DB_PASS: exercise2
     depends_on: 
-      - db
+      db:
+        condition: service_healthy
   db:
     image: postgres:13
     restart: always
@@ -24,3 +25,8 @@ services:
     volumes:
       - ./pg-data:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d exercise_two -U exercise2user"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
