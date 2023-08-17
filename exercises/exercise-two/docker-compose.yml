@@ -4,8 +4,12 @@ services:
     build: ./app
     ports: 
       - 5000:5000
-    environment: 
-      DB_URL: bla
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432 
+      DB_NAME: exercise_two
+      DB_USER: exercise2user
+      DB_PASS: exercise2
     depends_on: 
       - db
   db:
